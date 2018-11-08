@@ -1,0 +1,30 @@
+{
+    "version": "0.0.1",
+    "author": "Thomas Falc'her",
+    "debug": true,
+    "log": {
+        "level_values": {
+            "CRITICAL": 50,
+            "ERROR": 40,
+            "WARNING": 30,
+            "INFO": 20,
+            "DEBUG": 10,
+            "commentaire": "Valeurs utilisables pour le level"
+        },
+        "level": "DEBUG",
+        "dir": "/tmp",
+        "filename": "api-tabord-ng.log",
+        "max_filesize": 1000000,
+        "max_files": 5
+    },
+    "connectors": {
+        "elasticsearch": {
+            "index": "cryptoAnalysis",
+            "host": "localhost",
+            "port": 9200,
+            "bulk_size": 100,
+            "number_of_shards": 1,
+            "number_of_replicas": 0
+        }
+    }
+}

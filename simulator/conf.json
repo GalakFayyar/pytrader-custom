@@ -1,0 +1,30 @@
+{
+    "version": "0.0.1",
+    "name": "pytrader-custom-sim",
+    "author": "Thomas Falc'her",
+    "debug": true,
+    "settings": {
+        "initial_simulator_amount": 100,
+        "watcher_interval": 5,
+        "urls": {
+            "kraken": {
+                "ticker": "https://api.kraken.com/0/public/Ticker"
+            }
+        }
+    },
+    "log": {
+        "level_values": {
+            "CRITICAL": 50,
+            "ERROR": 40,
+            "WARNING": 30,
+            "INFO": 20,
+            "DEBUG": 10,
+            "commentaire": "Valeurs utilisables pour le niveau"
+        },
+        "level": "DEBUG",
+        "dir": "./logs",
+        "filename": "pytrader-custom-sim.log",
+        "max_filesize": 100000,
+        "max_files": 5
+    }
+}
