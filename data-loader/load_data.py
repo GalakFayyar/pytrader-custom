@@ -123,6 +123,7 @@ def run_import(conf, type_doc = None, source_file = None):
 
     # On lit dans un fichier
     reader = CSVio()
+    logger.info("Import data from file %s", source_file)
     swal.set_reader(reader, p_file=source_file, p_delimiter='|')
 
     # On écrit dans ElasticSearch
@@ -153,12 +154,10 @@ if __name__ == '__main__':
     files_ext = '*.txt'
     
     files = glob.glob(source_folder + files_ext)
-    print(source_folder + files_ext)
-    for name in files:
+    
+    for file in files:
         try:
-            with open(name) as f:
-                run_import(conf, type_doc, f)
-        except IOError as exc:
-            if exc.errno != errno.EISDIR:
-                logger.error("Error")
-                raise
+            run_import(conf, type_doc, file)
+        except Exception as e:
+            logger.error("Error importing file %s", file)
+            logger.error(e)
