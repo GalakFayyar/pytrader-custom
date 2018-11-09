@@ -1,6 +1,6 @@
-Flask==0.10.1
+Flask==0.12.3
 flask-cors==1.10.3
-requests==2.5.3
+requests==2.20.0
 pytz==2015.4
 chardet==2.3.0
 logger==1.4
