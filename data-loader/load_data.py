@@ -27,7 +27,7 @@ def file_to_elasticsearch(p_docin, p_type, p_es_conn, p_es_index, p_arguments):
     doc = {
         'date_operation': p_docin[0]
     }
-    for pair in doc_in[1:]:
+    for pair in p_docin[1:]:
         currency = pair.split(':')[0]
         value = pair.split(':')[1]
         doc[currency] = {
@@ -35,15 +35,20 @@ def file_to_elasticsearch(p_docin, p_type, p_es_conn, p_es_index, p_arguments):
             'value': value
         }
 
+    # document = {
+    #     '_op_type': 'update',
+    #     '_type': p_type,
+    #     'script': "ctx._source = doc",
+    #     'params': {
+    #         "doc": doc
+    #     },
+    #     'upsert': doc,
+    #     '_retry_on_conflict': 100
+    # }
     document = {
-        '_op_type': 'update',
         '_type': p_type,
-        'script': "ctx._source = doc",
-        'params': {
-            "doc": doc
-        },
-        'upsert': doc,
-        '_retry_on_conflict': 100
+        '_source': doc,
+        '_retry_on_conflict': 10
     }
     return [document]
 

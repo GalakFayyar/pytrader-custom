@@ -150,6 +150,7 @@ pip-selfcheck.json
 # Dedicated data from mde
 *.txt
 *.php
+*logs/
 
 # MACOSX environment
 .DS_Store
