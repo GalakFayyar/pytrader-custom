@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-    Intègres les données à destination de l'application GeoPro dans Elasticsearch
+    Intègres les données à destination de l'application pytrader-custom dans Elasticsearch
 
     Usage:
         init_data.py [--type_doc=<doc_type>] [--source_folder=<folder_path>] [--debug] 
