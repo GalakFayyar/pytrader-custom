@@ -12,14 +12,14 @@
             "commentaire": "Valeurs utilisables pour le level"
         },
         "level": "DEBUG",
-        "dir": "/tmp",
-        "filename": "api-tabord-ng.log",
-        "max_filesize": 1000000,
+        "dir": "./logs",
+        "filename": "cyrpto-data.log",
+        "max_filesize": 100000,
         "max_files": 5
     },
     "connectors": {
         "elasticsearch": {
-            "index": "cryptoAnalysis",
+            "index": "cryptoanalysis",
             "host": "localhost",
             "port": 9200,
             "bulk_size": 100,

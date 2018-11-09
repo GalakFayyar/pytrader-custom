@@ -101,12 +101,18 @@ def run_import(conf, type_doc = None, source_file = None):
         time.sleep(2)
 
         # Création des type mapping ES
-        if es_mappings:
-            for type_es, properties in es_mappings['crypto'].items():
-                logger.debug("Création du mapping pour le type de doc %s", type_es)
-                es.indices.put_mapping(index=index, doc_type=type_es, body=properties)
+        try:
+            es_mappings = json.load(open('conf/es.mappings.json'))
 
-            time.sleep(2)
+            if es_mappings:
+                for type_es, properties in es_mappings['crypto'].items():
+                    logger.debug("Création du mapping pour le type de doc %s", type_es)
+                    es.indices.put_mapping(index=index, doc_type=type_es, body=properties)
+
+                time.sleep(2)
+        except expression as identifier:
+            logger.info("No mapping provided.")
+            pass
 
     #
     #   Import des données initiales
