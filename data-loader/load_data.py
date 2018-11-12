@@ -35,16 +35,6 @@ def file_to_elasticsearch(p_docin, p_type, p_es_conn, p_es_index, p_arguments):
             'value': value
         }
 
-    # document = {
-    #     '_op_type': 'update',
-    #     '_type': p_type,
-    #     'script': "ctx._source = doc",
-    #     'params': {
-    #         "doc": doc
-    #     },
-    #     'upsert': doc,
-    #     '_retry_on_conflict': 100
-    # }
     document = {
         '_type': p_type,
         '_source': doc,
