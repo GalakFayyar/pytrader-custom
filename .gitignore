@@ -148,7 +148,7 @@ pip-selfcheck.json
 .vscode/
 
 # Dedicated data from mde
-*.txt
+*valeurs.txt
 *.php
 *logs/
 
