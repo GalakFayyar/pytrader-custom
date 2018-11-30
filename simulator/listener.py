@@ -41,13 +41,22 @@ class Processor:
         
         params['last_trade_price'] = params['new_trade_price']
 
-    logger.info("Launching ...")
+    print("Select the pair to use :")
+    print("Available pairs : ")
+
+    for idx, pair in enumerate(conf['settings']['available_pairs']):
+        print(str(idx) + ": " + pair)
+
+    selected_pair_idx = int(input("Select the pair to use: "))
+    selected_pair = conf['settings']['available_pairs'][selected_pair_idx]
+
+    logger.info("Launching on " + selected_pair + "...")
 
     while True:
         tickerUrl = conf['settings']['urls']['kraken']['ticker']
 
-        with urllib.request.urlopen(tickerUrl + "?pair=XBTEUR") as url:
+        with urllib.request.urlopen(tickerUrl + "?pair=" + selected_pair) as url:
             data = json.loads(url.read().decode())
-            params['new_trade_price'] = float(data['result']['XXBTZEUR']['c'][0])
+            params['new_trade_price'] = float(data['result'][selected_pair]['c'][0])
             process(params)
             time.sleep(conf['settings']['watcher_interval'])

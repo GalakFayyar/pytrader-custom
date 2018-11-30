@@ -10,7 +10,11 @@
             "kraken": {
                 "ticker": "https://api.kraken.com/0/public/Ticker"
             }
-        }
+        },
+        "available_pairs": [
+            "XXBTZEUR",
+            "XMLNXXBT"
+        ]
     },
     "log": {
         "level_values": {
